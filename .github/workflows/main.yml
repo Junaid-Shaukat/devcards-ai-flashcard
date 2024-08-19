@@ -1,0 +1,23 @@
+name: Lint Checking
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  lintTest:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name:
+        uses: actions/checkout@v2
+      - name: Installing Dependencies
+        run: |
+          echo "Installing dependencies..."
+          npm install
+      - name: Run Linting
+        run: |
+          echo "Running lint..."
+          npm run lint
+        env:
+          CI: true
